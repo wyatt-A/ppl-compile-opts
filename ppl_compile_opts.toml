@@ -1,0 +1,39 @@
+[clock]
+# master pulse program time base
+clock_period_ns = 100
+# min clocks per rf sample
+min_rf_clocks_per_sample = 20
+# min clocks per grad sample
+min_grad_clocks_per_sample = 20
+# minimum valid delay in clocks
+min_delay_clocks = 20
+
+[system_vars]
+parfilio_path = "C:/Windows/PARFILIO.INI"
+seq_gen_path = "C:/smis/seq_gen.exe"
+ppl_compiler_path = "C:/smis/p2f.exe"
+seq_gen_rf_template = "C:/workstation/data/seq_file/civm_rf_template2.seq"
+seq_gen_grad_template = "C:/workstation/data/seq_file/civm_grad_template2.seq"
+
+[limits]
+max_lut_i16_entries = 196095
+
+[event_timing]
+# rf schedule delay in clocks (delay before start of rf transmit)
+rf_schedule_delay_clocks = 1300
+# delay after rf pulse concludes before control is returned
+rf_return_delay_clocks = 50
+# grad schedule delay in clocks (delay before start of gradient ramp)
+grad_sched_delay_clocks = 50
+# time for control to return after the grad start command
+grad_ret_delay_clocks = 50
+# delay before start of sample acquisition
+acq_sched_delay_clocks = 960
+
+[dac]
+# max dac value of rf power
+dac_rf_max = 2047
+# max dac value of gradients
+dac_grad_max = 32767
+# converts degrees to dac
+dac_phase_res_deg = 0.225
