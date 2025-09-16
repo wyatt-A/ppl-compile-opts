@@ -10,7 +10,7 @@ mod tests {
 
     #[test]
     fn load_opts() {
-        let opts = Options::from_file("ppl_compile_opts.toml");
+        let opts = Options::from_file("C:/Users/MRS/ppl-compile-opts/ppl_compile_opts.toml");
     }
 
 }
@@ -86,7 +86,7 @@ impl Default for Limits {
 impl Options {
 
     pub fn load() -> Options {
-        Self::from_file("/Users/Wyatt/ppl-compile-opts/ppl_compile_opts.toml")
+        Self::from_file("C:/Users/MRS/ppl-compile-opts/ppl_compile_opts.toml")
     }
 
     pub fn from_file(conf_file: impl AsRef<Path>) -> Options {
