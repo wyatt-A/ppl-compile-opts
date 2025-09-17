@@ -46,8 +46,10 @@ pub struct Clock {
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct EventTiming {
-    /// delay before start of rf transmit
+    /// total delay between event start and rf pulse
     pub rf_schedule_delay_clocks: usize,
+    /// part of total delay attributed to the rfstart command itself
+    pub rf_lag_clocks: usize,
     /// delay after rf pulse concludes before control is returned
     pub rf_return_delay_clocks: usize,
     /// delay before start of gradient ramp
@@ -56,8 +58,12 @@ pub struct EventTiming {
     pub grad_ret_delay_clocks: usize,
     /// total delay before start of sample acquisition
     pub acq_sched_delay_clocks: usize,
-    /// part of the delay attributed to the call to acquire
+    /// part of the total delay attributed to the call to acquire
     pub acq_lag_clocks: usize,
+    /// delay between last sample and control return
+    pub acq_return_delay_clocks_1: usize,
+    /// delay between last sample and control return
+    pub acq_return_delay_clocks_2: usize,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -87,7 +93,8 @@ impl Default for Limits {
 impl Options {
 
     pub fn load() -> Options {
-        Self::from_file("C:/Users/MRS/ppl-compile-opts/ppl_compile_opts.toml")
+        //Self::from_file("C:/Users/MRS/ppl-compile-opts/ppl_compile_opts.toml")
+        Self::from_file("/Users/Wyatt/ppl-compile-opts/ppl_compile_opts.toml")
     }
 
     pub fn from_file(conf_file: impl AsRef<Path>) -> Options {
@@ -117,12 +124,15 @@ impl Default for Clock {
 impl Default for EventTiming {
     fn default() -> EventTiming {
         EventTiming {
-            rf_schedule_delay_clocks: 500,
+            rf_schedule_delay_clocks: 1300,
+            rf_lag_clocks: 500,
             rf_return_delay_clocks: 50,
             grad_sched_delay_clocks: 50,
             grad_ret_delay_clocks: 50,
             acq_sched_delay_clocks: 1000,
             acq_lag_clocks: 880,
+            acq_return_delay_clocks_1: 600,
+            acq_return_delay_clocks_2: 600,
         }
     }
 }
