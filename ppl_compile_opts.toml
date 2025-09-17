@@ -10,10 +10,11 @@ min_delay_clocks = 20
 
 [system_vars]
 parfilio_path = "C:/Windows/PARFILIO.INI"
-seq_gen_path = "C:/smis/seq_gen.exe"
-ppl_compiler_path = "C:/smis/p2f.exe"
-seq_gen_rf_template = "C:/workstation/data/seq_file/civm_rf_template2.seq"
-seq_gen_grad_template = "C:/workstation/data/seq_file/civm_grad_template2.seq"
+seq_gen_path = "seq_gen.exe"
+ppl_compiler_path = "p2f.exe"
+seq_gen_rf_template = "C:/workstation/data/seq_file/civm_rf_template.seq"
+seq_gen_grad_template = "C:/workstation/data/seq_file/civm_grad_template.seq"
+
 
 [limits]
 max_lut_i16_entries = 196095
@@ -29,6 +30,7 @@ grad_sched_delay_clocks = 50
 grad_ret_delay_clocks = 50
 # delay before start of sample acquisition
 acq_sched_delay_clocks = 960
+#acq_sched_delay_clocks = 40000
 
 [dac]
 # max dac value of rf power
