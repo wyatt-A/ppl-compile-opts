@@ -28,9 +28,10 @@ rf_return_delay_clocks = 50
 grad_sched_delay_clocks = 50
 # time for control to return after the grad start command
 grad_ret_delay_clocks = 50
-# delay before start of sample acquisition
-acq_sched_delay_clocks = 960
-#acq_sched_delay_clocks = 40000
+# total delay before start of sample acquisition
+acq_sched_delay_clocks = 1000
+# part of the delay attributed call to acquire()
+acq_lag_clocks = 880
 
 [dac]
 # max dac value of rf power

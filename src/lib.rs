@@ -54,8 +54,10 @@ pub struct EventTiming {
     pub grad_sched_delay_clocks: usize,
     /// time for control to return after grad start command
     pub grad_ret_delay_clocks: usize,
-    /// delay before start of sample acquisition
+    /// total delay before start of sample acquisition
     pub acq_sched_delay_clocks: usize,
+    /// part of the delay attributed to the call to acquire
+    pub acq_lag_clocks: usize,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -119,7 +121,8 @@ impl Default for EventTiming {
             rf_return_delay_clocks: 50,
             grad_sched_delay_clocks: 50,
             grad_ret_delay_clocks: 50,
-            acq_sched_delay_clocks: 960,
+            acq_sched_delay_clocks: 1000,
+            acq_lag_clocks: 880,
         }
     }
 }
