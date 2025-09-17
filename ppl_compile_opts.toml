@@ -9,13 +9,12 @@ min_grad_clocks_per_sample = 20
 min_delay_clocks = 20
 
 [system_vars]
-#parfilio_path = "C:/Windows/PARFILIO.INI"
-parfilio_path = "/Users/Wyatt/mrs-ppl/PARFILIO.ini"
+parfilio_path = "C:\\Windows\\PARFILIO.INI"
+#parfilio_path = "/Users/Wyatt/mrs-ppl/PARFILIO.ini"
 seq_gen_path = "seq_gen.exe"
 ppl_compiler_path = "p2f.exe"
-seq_gen_rf_template = "C:/workstation/data/seq_file/civm_rf_template.seq"
-seq_gen_grad_template = "C:/workstation/data/seq_file/civm_grad_template.seq"
-
+seq_gen_rf_template = "C:\\workstation\\data\\seq_file\\civm_rf_template.seq"
+seq_gen_grad_template = "C:\\workstation\\data\\seq_file\\civm_grad_template.seq"
 
 [limits]
 max_lut_i16_entries = 196095
@@ -26,7 +25,7 @@ rf_schedule_delay_clocks = 1300
 # part of the delay attributed to the rfstart command itself
 rf_lag_clocks = 500
 # delay after rf pulse concludes before control is returned
-rf_return_delay_clocks = 50
+rf_return_delay_clocks = 525
 # grad schedule delay in clocks (delay before start of gradient ramp)
 grad_sched_delay_clocks = 50
 # time for control to return after the grad start command
@@ -36,8 +35,8 @@ acq_sched_delay_clocks = 1000
 # part of the delay attributed call to acquire()
 acq_lag_clocks = 880
 # delay between last sample and ppl control return
-acq_return_delay_clocks_1 = 230
-# delay between last sample and ppl control return (depends on dwell time)
+acq_return_delay_clocks_1 = 3700
+# a different delay between last sample and ppl control return (if alternate dwell time is used)
 acq_return_delay_clocks_2 = 630
 
 [dac]
