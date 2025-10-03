@@ -5,8 +5,8 @@ clock_period_ns = 100
 min_rf_clocks_per_sample = 20
 # min clocks per grad sample
 min_grad_clocks_per_sample = 20
-# minimum valid delay in clocks
-min_delay_clocks = 20
+# minimum valid delay in clocks (cannot be less than 30)
+min_delay_clocks = 30
 
 [system_vars]
 parfilio_path = "C:\\Windows\\PARFILIO.INI"
