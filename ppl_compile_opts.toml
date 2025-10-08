@@ -21,7 +21,7 @@ max_lut_i16_entries = 196095
 
 [event_timing]
 # total rf schedule delay in clocks (delay from event start to rf pulse)
-rf_schedule_delay_clocks = 1000
+rf_schedule_delay_clocks = 1200
 # part of the delay attributed to the rfstart command itself
 rf_lag_clocks = 500
 # delay after rf pulse concludes before control is returned
