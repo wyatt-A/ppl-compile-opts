@@ -27,7 +27,7 @@ rf_lag_clocks = 500
 # delay after rf pulse concludes before control is returned
 rf_return_delay_clocks = 525
 # grad schedule delay in clocks (delay before start of gradient ramp)
-grad_sched_delay_clocks = 120
+grad_sched_delay_clocks = 190
 # time for control to return after the grad start command
 grad_ret_delay_clocks = 120
 # total delay before start of sample acquisition
