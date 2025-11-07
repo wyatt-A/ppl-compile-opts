@@ -3,17 +3,6 @@ use std::io::Read;
 use std::path::{Path, PathBuf};
 use serde::Deserialize;
 
-#[cfg(test)]
-mod tests {
-    use crate::Options;
-
-    #[test]
-    fn load_opts() {
-        let opts = Options::from_file("C:/Users/MRS/ppl-compile-opts/ppl_compile_opts.toml");
-    }
-
-}
-
 #[derive(Debug, Clone, Deserialize)]
 pub struct Options {
     pub clock: Clock,
@@ -25,11 +14,21 @@ pub struct Options {
 
 #[derive(Debug, Clone, Deserialize, Default)]
 pub struct SystemVars {
-    pub parfilio_path: PathBuf,
+    parfilio_path_env: String,
     pub seq_gen_path: PathBuf,
     pub ppl_compiler_path: PathBuf,
     pub seq_gen_rf_template: PathBuf,
     pub seq_gen_grad_template: PathBuf,
+}
+
+impl SystemVars {
+    pub fn parfilio_path(&self) -> PathBuf {
+        if let Ok(path) = std::env::var(&self.parfilio_path_env) {
+            PathBuf::from(path)
+        }else {
+            panic!("{} environment variable not found", &self.parfilio_path_env)
+        }
+    }
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -93,10 +92,14 @@ impl Default for Limits {
 impl Options {
 
     pub fn load() -> Options {
-        Self::from_file("C:/Users/MRS/ppl-compile-opts/ppl_compile_opts.toml")
-        //Self::from_file("/Users/Wyatt/ppl-compile-opts/ppl_compile_opts.toml")
-        //Self::from_file("/home/wyatt/ppl-compile-opts/ppl_compile_opts.toml")
-        //Self::from_file("C:/Users/waust/ppl-compile-opts/ppl_compile_opts.toml")
+        match std::env::var("PPL_COMPILE_OPTS") {
+            Err(e) => {
+                panic!("PPL_COMPILE_OPTS environment variable must be set to the .toml config: {e}");
+            },
+            Ok(config_path) => {
+                Self::from_file(config_path)
+            }
+        }
     }
 
     pub fn from_file(conf_file: impl AsRef<Path>) -> Options {
